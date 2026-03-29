@@ -1,0 +1,51 @@
+{
+  "name": "UltraX",
+  "description": "UltraX — your powerful WhatsApp multi-session bot!",
+  "logo": "https://files.catbox.moe/ia1mgm.jpg",
+  "keywords": ["whatsapp", "bot", "ultrax"],
+  "repository": "https://github.com/Dark-Xploit/CypherX-Ultra",
+  "stack": "container",
+  "addons": [
+    {
+      "plan": "heroku-postgresql"
+    }
+  ],
+  "scripts": {
+    "start": "node index.js"
+  },
+  "env": {
+    "MASTER_PASSWORD": {
+      "description": "Password for the web dashboard. Required to pair sessions and access bot settings.",
+      "value": "123456",
+      "required": true
+    },
+    "GITHUB_USERNAME": {
+      "description": "Your GitHub username. You must have forked the CypherX-Ultra repository before using this bot.",
+      "value": "",
+      "required": true
+    },
+    "DATABASE_URL": {
+      "description": "PostgreSQL connection string. Automatically set by the Heroku Postgres add-on — do not change.",
+      "required": false
+    },
+    "PORT": {
+      "description": "Web server port. Automatically set by Heroku — do not change.",
+      "value": "3000",
+      "required": false
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/DuckyTeam/heroku-buildpack-imagemagick.git"
+    },
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    },
+    {
+      "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
+    }
+  ]
+}
